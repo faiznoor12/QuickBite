@@ -8,9 +8,9 @@ import { FoodService } from 'src/app/services/food.service';
   styleUrls: ['./tags.component.scss']
 })
 export class TagsComponent {
-  tags:Tag[]
+  tags?:Tag[]
   constructor(private foodService:FoodService){
-    this.tags = this.foodService.getAllTags()
+    this.foodService.getAllTags().subscribe(serverTags=>this.tags=serverTags )
   }
 
 }

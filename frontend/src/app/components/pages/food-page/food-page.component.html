@@ -1,8 +1,8 @@
 <app-not-found
-[visible]="!food.id"
+[visible]="!food"
 notFoundMessage="Food not found!"
 resetLinkText="Back to homepage"></app-not-found>
-<div *ngIf="food.id" class="m-12 flex flex-wrap justify-center items-center " >
+<div *ngIf="food" class="m-12 flex flex-wrap justify-center items-center " >
   <div class="min-w-[25rem] max-w-[40rem] m-4 flex-2">
   <img class="rounded-[3rem]  object-cover " src="{{ food.imageUrl }}" alt="{{ food.name }}" />
   </div>

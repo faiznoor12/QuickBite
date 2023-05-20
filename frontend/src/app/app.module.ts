@@ -13,6 +13,7 @@ import { CartPageComponent } from './components/pages/cart-page/cart-page.compon
 import { TitleComponent } from './components/partials/title/title.component';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './components/partials/not-found/not-found.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NotFoundComponent } from './components/partials/not-found/not-found.com
     BrowserModule,
     AppRoutingModule,
     RatingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
