@@ -1,0 +1,6 @@
+<div class="w-full flex items-center justify-center p-4">
+  <div class="bg-white flex items-center justify-center h-10 px-4 rounded-full border-2 border-[#e72929]">
+    <input class="bg-white h-full focus:outline-none text-[#e72929]" #s type="text" (keyup.enter)="search(s.value)" [value]="searchKey">
+<button (click)="search(s.value)" class="text-[#e72929]">search</button>
+  </div>
+</div>

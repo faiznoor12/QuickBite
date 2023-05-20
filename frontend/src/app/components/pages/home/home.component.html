@@ -1,0 +1,53 @@
+<app-search></app-search>
+<app-tags></app-tags>
+<app-not-found
+[visible]="!foods || !foods.length"
+resetLinkText="Reset search"
+></app-not-found>
+<ul class="flex justify-center items-center flex-wrap list-none p-0">
+  <li *ngFor="let food of foods" routerLink="/food/{{food.id}}">
+    <a
+      class="h-[24rem] w-80 border-[1px] border-gray-300 rounded-2xl m-2 flex flex-col overflow-hidden text-[#e72929] hover:opacity-[0.9] cursor-pointer"
+      routerLink="/food/{{ food.id }}"
+    >
+      <img
+        class="object-cover h-[14.5rem]"
+        [src]="food.imageUrl"
+        [alt]="food.name"
+      />
+      <div id="content" class="mt-[0.3rem] py-2 px-4 relative h-28">
+        <div id="name" class="">
+          {{ food.name }}
+        </div>
+        <span *ngIf="food.favorite" id="favorite" class="absolute top-2 right-4 text-[1.2rem]">
+          ❤
+        </span>
+        <span id="favorite" class="absolute top-0 right-3.5 text-[1.9rem]">
+          ♡
+        </span>
+        <div id="stars" class=" mb-[0.2rem]">
+          <star-rating
+            [value]="food.stars"
+            [totalstars]="5"
+            checkedcolor="red"
+            uncheckedcolor="black"
+            size="22px"
+            [readonly]="true"
+          ></star-rating>
+        </div>
+        <div id="product-item-footer" class="flex justify-between items-start">
+          <div id="origins" class="flex-[9]">
+            <span class="rounded-[2rem] bg-slate-200 inline-block text-[0.8rem] text-gray-400 mr-[0.3rem] px-2 mt-[0.2rem]" *ngFor="let origin of food.origins">{{ origin }}</span>
+          </div>
+          <div id="cook-time" class="text-[0.9rem] flex-[3] text-right">
+            <span>🕑</span>
+            {{ food.cookTime }}
+          </div>
+        </div>
+        <div id="price" class="absolute left-[0.9rem] pt-[0.3rem] pl- text-[#414141] mt-[0.7rem] text-[1.1rem]">
+          <span>{{ food.price | currency }}</span>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>
