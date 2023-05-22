@@ -7,3 +7,4 @@ export const FOODS_BY_TAGS_URL = FOODS_URL + '/tag/'
 export const FOODS_BY_ID_URL = FOODS_URL + '/'
 
 
+export const USER_LOGIN_URL = BASE_URL + '/api/users/login'

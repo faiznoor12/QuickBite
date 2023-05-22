@@ -4,16 +4,14 @@
     <nav>
       <ul class="m-0 flex">
         <li>
-          <a class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block" routerLink="/login">Login</a>
+          <a *ngIf="!isAuth" class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block" routerLink="/login">Login</a>
         </li>
-        <li id="menu-container" class="relative">
-          <a class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block" routerLink="/dashboard">faiz</a>
-          <div id="menu" class=" absolute z-10  top-0 h-14 w-16 hover:h-72 hover:w-fit overflow-hidden">
-            <a class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block" routerLink="/dashboard">faiz</a>
-            <div class="h-[2px]"></div>
+        <li *ngIf="isAuth"  id="menu-container" class="relative group">
+          <a class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block" routerLink="/dashboard">{{user.name}}</a>
+          <div id="menu" class="absolute z-10 hover:h-72 w-fit overflow-hidden hidden group-hover:block ">
             <a class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block min-w-[8rem] bg-slate-300" routerLink="/profile">Profile</a>
             <a class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block min-w-[8rem] bg-slate-300" routerLink="/orders">Orders</a>
-            <a class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block min-w-[8rem] bg-slate-300" href="">Logout</a>
+            <a class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block min-w-[8rem] bg-slate-300" (click)="logOut()">Logout</a>
           </div>
         </li>
         <li>
