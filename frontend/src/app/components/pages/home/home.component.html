@@ -7,7 +7,7 @@ resetLinkText="Reset search"
 <ul class="flex justify-center items-center flex-wrap list-none p-0">
   <li *ngFor="let food of foods" routerLink="/food/{{food.id}}">
     <a
-      class="h-[24rem] w-80 border-[1px] border-gray-300 rounded-2xl m-2 flex flex-col overflow-hidden text-[#e72929] hover:opacity-[0.9] cursor-pointer"
+      class="h-[24rem] max-w-80 border-[1px] border-gray-300 rounded-2xl m-2 flex flex-col overflow-hidden text-[#e72929] hover:opacity-[0.9] cursor-pointer"
       routerLink="/food/{{ food.id }}"
     >
       <img

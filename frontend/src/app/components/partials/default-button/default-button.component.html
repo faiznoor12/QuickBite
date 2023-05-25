@@ -1,0 +1,16 @@
+<div class="w-screen">
+  <button
+    [ngStyle]="{
+      color: Color,
+      'background-color': bgColor,
+      'font-size.rem': fontSizeRem,
+      'width.rem': widthRem
+    }"
+    [type]="type"
+
+    (click)="onClick.emit()"
+    class="flex h-10 justify-center rounded-md px-3 py-1.5 font-semibold leading-6"
+  >
+{{text}}
+</button>
+</div>
