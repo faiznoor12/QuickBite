@@ -16,12 +16,12 @@ router.get('/seed', asynchandler(
      }
 ) )
 
-router.get('/', asynchandler(
-    async (req ,res)=>{
-        const foods = await FoodModel.find()
+router.get("/",asynchandler(
+    async (req, res) => {
+      const foods = await FoodModel.find();
         res.send(foods);
-     }
-))
+    }
+  ))
 
 router.get('/search/:searchTerm', asynchandler(
     async (req ,res)=>{

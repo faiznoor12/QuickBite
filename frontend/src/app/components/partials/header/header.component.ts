@@ -23,7 +23,7 @@ logOut(){
   this.userService.logOut()
 }
 get isAuth(){
-return this.user.token
+return this.user.name
 }
 
 }

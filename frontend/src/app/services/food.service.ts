@@ -19,7 +19,10 @@ export class FoodService {
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<food[]> {
-    return this.http.get<food[]>(FOODS_URL);
+    console.log(FOODS_URL);
+
+    return this.http.get<food[]>(FOODS_URL)
+
   }
   getAllFoodBySearchTerm(searchTerm: string) {
     return this.http.get<food[]>(FOODS_BY_SEARCH_URL + searchTerm);
