@@ -39,6 +39,9 @@ this.setCartToLocalStorage()
   getCartObservable():Observable<cart>{
     return this.cartSubect.asObservable()
   }
+  getCart(){
+    return this.cartSubect.value
+  }
   private setCartToLocalStorage(){
     this.cart.totalPrice = this.cart.items.reduce((prevSum ,currentItem) => prevSum + currentItem.price , 0)
     this.cart.totalCount = this.cart.items.reduce((prevSum ,currentItem) => prevSum + currentItem.quantity , 0)

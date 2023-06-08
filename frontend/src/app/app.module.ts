@@ -25,6 +25,9 @@ import { DefaultButtonComponent } from './components/partials/default-button/def
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { LoadingComponent } from './components/partials/loading/loading.component';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
+import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
+import { OrderItemListComponent } from './components/partials/order-item-list/order-item-list.component';
+import { MapComponent } from './components/partials/map/map.component';
 
 
 
@@ -45,7 +48,10 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
     TextInputComponent,
     DefaultButtonComponent,
     RegisterPageComponent,
-    LoadingComponent
+    LoadingComponent,
+    CheckoutPageComponent,
+    OrderItemListComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +61,9 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
     HttpClientModule,
     ReactiveFormsModule,
     RatingModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      positionClass:'toast-bottom-right',
+    })
 
   ],
   providers: [{

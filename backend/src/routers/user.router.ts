@@ -54,13 +54,19 @@ router.post('/register',asynchandler(
               return
           }
           const encryptedPassword = await bcrypt.hash(password,10)
+          const token = jwt.sign({
+            email:email, password:encryptedPassword
+        },"someRandomText",{
+            expiresIn:"30d"
+        })
           const newUser:User={
             id:'',
             name:name,
             email:email.toLowerCase(),
             password:encryptedPassword,
             address:address,
-            isAdmin:false
+            isAdmin:false,
+            token:token
           }
           res.send(newUser)
           const dbUser = await UserModel.create(newUser)

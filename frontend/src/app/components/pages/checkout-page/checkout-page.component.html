@@ -1,0 +1,22 @@
+<div id="container" class="flex flex-wrap justify-center mt-4 mb-24 ml-8 mr-8">
+  <div id="content" class="w-[35rem] mr-12 flex flex-col">
+    <app-title title="Order Form"></app-title>
+    <div class="flex items-center justify-center">
+      <form [formGroup]="checkoutForm" class="flex flex-col w-full">
+        <text-input [control]="fc['name']" label="Name"></text-input>
+        <text-input [control]="fc['address']" label="address"></text-input>
+      </form>
+    </div>
+
+    <order-item-list [order]="order"></order-item-list>
+  </div>
+  <div id="map" class="">
+    <app-title title="Choose Your Location On Map" fontSize="1.6rem"></app-title>
+    <map [order]="order"></map>
+  </div>
+  <div id="buttons-container" class="flex justify-center basis-full">
+    <div id="buttons" class="m-4 w-[35rem]">
+      <button class="text-white bg-[#e72929] w-full h-12 opacity-80 text-[1.3rem] border-none rounded-sm shadow-md hover:opacity-100 hover:cursor-pointer" (click)="createOrder()">Go To Payment</button>
+    </div>
+  </div>
+</div>
