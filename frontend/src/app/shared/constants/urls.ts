@@ -1,3 +1,4 @@
+
 const BASE_URL = 'http://localhost:5000'
 
 export const FOODS_URL = BASE_URL + '/api/foods'
@@ -9,3 +10,6 @@ export const FOODS_BY_ID_URL = FOODS_URL + '/'
 
 export const USER_LOGIN_URL = BASE_URL + '/api/users/login'
 export const USER_REGISTER_URL = BASE_URL + '/api/users/register'
+export const ORDER_URL = BASE_URL + '/api/orders'
+export const ORDER_CREATE_URL = ORDER_URL + '/create'
+

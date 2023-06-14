@@ -48,27 +48,27 @@
  resetLinkText="Go to homepage"
  ></app-not-found>
  <div class="container mx-auto mt-10" *ngIf="cart && cart.items.length">
-  <div class="flex shadow-md my-10">
-    <div class="w-3/4 bg-white px-10 py-10">
-      <div class="flex justify-between border-b pb-8">
-        <h1 class="font-semibold text-2xl">Shopping Cart</h1>
-        <h2 class="font-semibold text-2xl">{{cart.totalCount}} Items</h2>
+  <div class="flex my-10 shadow-md">
+    <div class="w-3/4 px-10 py-10 bg-white">
+      <div class="flex justify-between pb-8 border-b">
+        <h1 class="text-2xl font-semibold">Shopping Cart</h1>
+        <h2 class="text-2xl font-semibold">{{cart.totalCount}} Items</h2>
       </div>
       <div class="flex mt-10 mb-5">
-        <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
-        <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Quantity</h3>
-        <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Price</h3>
+        <h3 class="w-2/5 text-xs font-semibold text-gray-600 uppercase">Product Details</h3>
+        <h3 class="w-1/5 text-xs font-semibold text-center text-gray-600 uppercase">Quantity</h3>
+        <h3 class="w-1/5 text-xs font-semibold text-center text-gray-600 uppercase">Price</h3>
 
       </div>
-      <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5" *ngFor="let cartItem of cart.items">
+      <div class="flex items-center px-6 py-5 -mx-8 hover:bg-gray-100" *ngFor="let cartItem of cart.items">
         <div class="flex w-2/5" > <!-- product -->
           <div class="w-20">
             <img class="h-24" src="{{cartItem.food.imageUrl}}" alt="">
           </div>
-          <div class="flex flex-col justify-center items-start ml-4 flex-grow" routerLink="/food/{{cartItem.food.id}}">
-            <span class="font-bold text-xl" >{{cartItem.food.name}}</span>
-            <!-- <span class="text-red-500 text-xs">Apple</span> -->
-            <!-- <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a> -->
+          <div class="flex flex-col items-start justify-center flex-grow ml-4" routerLink="/food/{{cartItem.food.id}}">
+            <span class="text-xl font-bold" >{{cartItem.food.name}}</span>
+            <!-- <span class="text-xs text-red-500">Apple</span> -->
+            <!-- <a href="#" class="text-xs font-semibold text-gray-500 hover:text-red-500">Remove</a> -->
           </div>
         </div>
         <div class="flex justify-center w-1/5"  >
@@ -84,8 +84,8 @@
       <option>5</option>
     </select>
         </div>
-        <span class="text-center w-1/5 font-semibold text-sm">{{cartItem.quantity*cartItem.food.price|currency}}</span>
-        <button class="text-center w-1/5 font-semibold text-sm hover:text-red-500 text-gray-500" (click)="removeFromCart(cartItem)">Remove</button>
+        <span class="w-1/5 text-sm font-semibold text-center">{{cartItem.quantity*cartItem.food.price|currency}}</span>
+        <button class="w-1/5 text-sm font-semibold text-center text-gray-500 hover:text-red-500" (click)="removeFromCart(cartItem)">Remove</button>
       </div>
 
       <a href="#" class="flex font-semibold text-[#e72929] text-sm mt-10">
@@ -96,17 +96,17 @@
     </div>
 
     <div id="summary" class="w-1/4 px-8 py-10">
-      <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
+      <h1 class="pb-8 text-2xl font-semibold border-b">Order Summary</h1>
       <div class="flex justify-between mt-10 mb-5">
-        <span class="font-semibold text-sm uppercase">{{cart.totalCount}} Items</span>
-        <!-- <span class="font-semibold text-sm">590$</span> -->
+        <span class="text-sm font-semibold uppercase">{{cart.totalCount}} Items</span>
+        <!-- <span class="text-sm font-semibold">590$</span> -->
       </div>
-        <div class="border-t mt-8">
-        <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+        <div class="mt-8 border-t">
+        <div class="flex justify-between py-6 text-sm font-semibold uppercase">
           <span>Total cost</span>
           <span>{{cart.totalPrice|currency}}</span>
         </div>
-        <button class="bg-[#e72929] font-semibold py-3 text-sm text-white uppercase w-full">Checkout</button>
+        <button class="bg-[#e72929] font-semibold py-3 text-sm text-white uppercase w-full" routerLink="/checkout" >Checkout</button>
       </div>
     </div>
 

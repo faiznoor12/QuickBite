@@ -1,26 +1,62 @@
 <header class="relative bg-white p-0 border-b-[1px] border-[#e72929]">
-  <div id="container" class="my-0 mx-auto flex justify-between">
-    <a class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer font-bold p-4" id="logo" routerLink="/">Food mine!</a>
+  <div id="container" class="flex justify-between mx-auto my-0">
+    <a
+      class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer font-bold p-4"
+      id="logo"
+      routerLink="/"
+      >QuickBite
+    </a>
     <nav>
-      <ul class="m-0 flex">
+      <ul class="flex m-0">
         <li>
-          <a *ngIf="!isAuth" class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block" routerLink="/login">Login</a>
+          <a
+            *ngIf="!isAuth"
+            class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block"
+            routerLink="/login"
+            >Login</a
+          >
         </li>
-        <li *ngIf="isAuth"  id="menu-container" class="relative group">
-          <a class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block" routerLink="/dashboard">{{user.name}}</a>
-          <div id="menu" class="absolute z-10 hover:h-72 w-fit overflow-hidden hidden group-hover:block ">
-            <a class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block min-w-[8rem] bg-slate-300" routerLink="/profile">Profile</a>
-            <a class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block min-w-[8rem] bg-slate-300" routerLink="/orders">Orders</a>
-            <a class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block min-w-[8rem] bg-slate-300" (click)="logOut()">Logout</a>
+        <li *ngIf="isAuth" id="menu-container" class="relative group">
+          <a
+            class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block"
+            routerLink="/dashboard"
+            >{{ user.name }}</a
+          >
+          <div
+            id="menu"
+            class="absolute z-10 hidden overflow-hidden hover:h-72 w-fit group-hover:block"
+          >
+            <a
+              class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block min-w-[8rem] bg-slate-300"
+              routerLink="/profile"
+              >Profile</a
+            >
+            <a
+              class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block min-w-[8rem] bg-slate-300"
+              routerLink="/orders"
+              >Orders</a
+            >
+            <a
+              class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block min-w-[8rem] bg-slate-300"
+              (click)="logOut()"
+              >Logout</a
+            >
           </div>
         </li>
         <li>
-          <a class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block z-50" routerLink="/cart-page">
-            Cart <span class="bg-[#ff4d4d] text-white py-[0.1rem] px-[0.45rem] rounded-full text-[0.9rem]" *ngIf="cartQuntity">{{cartQuntity}} </span>
+          <a
+            class="text-[#af1313] hover:bg-[#e72929] hover:text-white cursor-pointer p-4 inline-block z-50"
+            routerLink="/cart-page"
+          >
+            Cart
+            <span
+              class="bg-[#ff4d4d] text-white py-[0.1rem] px-[0.45rem] rounded-full text-[0.9rem]"
+              *ngIf="cartQuntity"
+              >{{ cartQuntity }}
+            </span>
           </a>
         </li>
       </ul>
     </nav>
   </div>
 </header>
-

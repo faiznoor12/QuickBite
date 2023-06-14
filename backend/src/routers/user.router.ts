@@ -23,26 +23,36 @@ router.get('/seed', asynchandler(
  ) )
  
 
+// ----------------------idid---------------------
+// router.post('/login',asynchandler(
+//   async (req,res:any)=>{
+//         const {email , password}= req.body
+//         const user= await UserModel.findOne({email: email})        
+//         if(!user)return res.status(400).json('user not found')
+//         const realPass = await bcrypt.compare(password,user.password)
+//         if(!realPass) return res.status(400).json('password not valid')
+//         res.send(generateTokenResponce(user))
+//     }
+// ))
+// --------------------------------------------------------
 
-router.post('/login',asynchandler(
-  async (req,res:any)=>{
-        const {email , password}= req.body
-        const user= await UserModel.findOne({email: email})        
-        if(!user)return res.status(400).json('user not found')
-        const realPass = await bcrypt.compare(password,user.password)
-        if(!realPass) return res.status(400).json('password not valid')
-        res.send(generateTokenResponce(user))
-        
-            //    const encryptedPassword = await bcrypt.hash(password,10)
-    //     res.send([email,encryptedPassword])
-        // const user = await UserModel.findOne({email,password})
-        // if(user) {
-        //     res.send(generateTokenResponce(user))
-        // }else{
-        //     res.status(HTTP_BAD_REQUEST).send("User name or password is not valid!")
-        // }
+
+
+router.post("/login", asynchandler(
+    async (req, res) => {
+      const {email, password} = req.body;
+      const user = await UserModel.findOne({email});
+    
+       if(user && (await bcrypt.compare(password,user.password))) {
+        res.send(generateTokenResponce(user));
+       }
+       else{
+         res.status(HTTP_BAD_REQUEST).send("Username or password is invalid!");
+       }
+    
     }
-))
+  ))
+
 
 
 router.post('/register',asynchandler(
@@ -54,35 +64,36 @@ router.post('/register',asynchandler(
               return
           }
           const encryptedPassword = await bcrypt.hash(password,10)
-          const token = jwt.sign({
-            email:email, password:encryptedPassword
-        },"someRandomText",{
-            expiresIn:"30d"
-        })
           const newUser:User={
             id:'',
-            name:name,
+            name,
             email:email.toLowerCase(),
             password:encryptedPassword,
-            address:address,
-            isAdmin:false,
-            token:token
+            address,
+            isAdmin:false
           }
-          res.send(newUser)
+        //   res.send(newUser)
           const dbUser = await UserModel.create(newUser)
-          console.log('newUser,dbUser');
+        //   console.log('newUser,dbUser');
           res.send(generateTokenResponce(dbUser))
       }
   ))
 
 const generateTokenResponce = (user:any)=>{
     const token = jwt.sign({
-        email:user.email, isAdmin:user.isAdmin
-    },"someRandomText",{
+       id:user.id , email:user.email, isAdmin:user.isAdmin
+    },process.env.JWT_SECRET!,{
         expiresIn:"30d"
     })
-    user.token = token 
-    return user
+    
+    return {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        address: user.address,
+        isAdmin: user.isAdmin,
+        token: token
+    }
 }
 
 export default router

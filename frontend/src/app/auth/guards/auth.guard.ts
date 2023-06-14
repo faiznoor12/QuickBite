@@ -23,7 +23,9 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
       console.log(this.userService.currentUser);
-    if (this.userService.currentUser.email) return true
+
+
+    if (this.userService.currentUser.token) return true
 
 
     this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
